@@ -7,9 +7,8 @@ def run():
     mlflow.set_tracking_uri("sqlite:///mlruns.db")
     s = setup(data, target = 'charges', session_id = 123, silent = True, 
                 log_experiment = True, experiment_name = 'insurance_demo4', log_plots = True)
-    all_models = [create_model(i) for i in models().index.tolist()]
-    best_model = automl()
-    final_best = finalize_model(best_model)
+    models = ['lr', 'dt', 'lightgbm', 'rf']
+    all_models = [create_model(i) for i in models]
         
 if __name__ == "__main__":
     run()
